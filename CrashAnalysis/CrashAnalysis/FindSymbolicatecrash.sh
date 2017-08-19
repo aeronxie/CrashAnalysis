@@ -7,3 +7,4 @@
 #  Copyright © 2017年 xiefei5. All rights reserved.
 
 find /Applications/Xcode.app/Contents/SharedFrameworks -name symbolicatecrash -type f
+
