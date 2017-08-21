@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="XfG-lQ-9wD">
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="12121"/>
@@ -678,10 +678,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Fay-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="RootViewController" sceneMemberID="viewController">
+                <viewController title="Fay" id="XfG-lQ-9wD" customClass="RootViewController" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -720,7 +720,7 @@
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uB1-xJ-E1T">
-                                <rect key="frame" x="167" y="176" width="286" height="33"/>
+                                <rect key="frame" x="167" y="176" width="293" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="选择dsym文件" drawsBackground="YES" id="4px-2r-JRN">
                                     <font key="font" metaFont="system"/>
@@ -729,16 +729,16 @@
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xZh-Si-WG6">
-                                <rect key="frame" x="167" y="65" width="286" height="33"/>
+                                <rect key="frame" x="167" y="65" width="293" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="输出crash文件路径" drawsBackground="YES" id="N0Q-HY-9Fz">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="(后缀为.crash文件)/ 未选择则默认自动输出桌面" drawsBackground="YES" id="N0Q-HY-9Fz">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ONq-Sq-fnP">
-                                <rect key="frame" x="167" y="124" width="286" height="33"/>
+                                <rect key="frame" x="167" y="124" width="293" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" placeholderString="选择ips文件" drawsBackground="YES" id="qc0-MZ-R5Z">
                                     <font key="font" metaFont="system"/>
@@ -766,6 +766,10 @@
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Zgv-PE-POZ">
+                                <rect key="frame" x="289" y="22" width="16" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>
@@ -774,6 +778,7 @@
                         <outlet property="choiceIpsButton" destination="Xt1-o6-ivK" id="PUl-uH-xns"/>
                         <outlet property="crashTextfield" destination="xZh-Si-WG6" id="mQh-45-Aed"/>
                         <outlet property="dsymTextfield" destination="uB1-xJ-E1T" id="de7-4i-6lB"/>
+                        <outlet property="indicator" destination="Zgv-PE-POZ" id="3Kz-ly-kbt"/>
                         <outlet property="ipsTextfield" destination="ONq-Sq-fnP" id="fkM-Kd-XZx"/>
                         <outlet property="startAnalysis" destination="PHh-pS-PcL" id="zqg-RR-oDD"/>
                     </connections>

@@ -10,11 +10,15 @@
 #import "ScriptManager.h"
 #import "FileItem.h"
 
-@interface RootViewController ()
+@interface RootViewController () {
+    NSString *_deskTopPath;
+}
 
 @property (nonatomic,strong) FileItem *ipsItem;
 @property (nonatomic,strong) FileItem *dsymItem;
 @property (nonatomic,strong) FileItem *crashItem;
+
+@property (weak) IBOutlet NSProgressIndicator *indicator;
 @property (weak) IBOutlet NSButton *choiceDsymButton;
 @property (weak) IBOutlet NSButton *choiceIpsButton;
 @property (weak) IBOutlet NSButton *FileOutputButton;
@@ -29,16 +33,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.indicator.hidden = YES;
 }
 
 - (void)viewDidAppear {
     [self fetchSymbolicatePathFromCache];
+    [self fetchDeskTopPath];
 }
 
 - (void)setRepresentedObject:(id)representedObject {
     [super setRepresentedObject:representedObject];
-
     // Update the view, if already loaded.
+}
+
+- (void)fetchDeskTopPath {
+    [ScriptManager executeScriptPath:scriptPathInBundle(@"GetdeskTop") executing:^(NSString *output) {
+        _deskTopPath = output;
+    } completion:nil];
 }
 
 - (void)fetchSymbolicatePathFromCache {
@@ -90,6 +101,39 @@
     }
 }
 
+- (void)startAnimation {
+    self.indicator.hidden = NO;
+//    self.FileOutputButton.enabled = NO;
+    [self.indicator startAnimation:self];
+}
+
+- (void)stopAnimation {
+    self.indicator.hidden = YES;
+//    self.FileOutputButton.enabled = YES;
+    [self.indicator startAnimation:self];
+}
+
+- (BOOL)checkValid {
+    if (self.dsymTextfield.stringValue.length <= 0) {
+        [self showAlertView:@"请选择DSYM文件" message:@"选择文件失败"];
+        return NO;
+    }
+    if (self.ipsTextfield.stringValue.length <= 0) {
+        [self showAlertView:@"请选择ips文件" message:@"选择文件失败"];
+        return NO;
+    }
+    return YES;
+}
+
+- (void)showAlertView:(NSString *)infoTxt message:(NSString *)msg {
+    NSAlert *alert = [[NSAlert alloc] init];
+    [alert addButtonWithTitle:@"好的"];
+    [alert setMessageText:msg];
+    [alert setInformativeText:infoTxt];
+    [alert setAlertStyle:NSInformationalAlertStyle];
+    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:nil];
+}
+
 - (IBAction)choiceDsym:(id)sender {
     [self handlerWithFileType:FileType_DSYM];
 }
@@ -102,19 +146,31 @@
     [self handlerWithFileType:FileType_CrashLog];
 }
 
-- (IBAction)AnalysisCrash:(id)sender {
-    
+- (IBAction)AnalysisCrash:(NSButton *)sender {
+    if (![self checkValid]) return;
+    [self startAnimation];
+    sender.enabled = NO;
     NSString *scriptPath = scriptPathInBundle(@"AnalysisScript");
     NSString *arg1 = symbolicatecrashPath();
     NSString *arg2 = _ipsItem.filePath;
     NSString *arg3 = _dsymItem.filePath;
-    NSString *arg4 = [_crashItem.filePath stringByAppendingString:@".crash"];
+    
+    NSString *outputFullPath = [_ipsItem.fileFullName stringByDeletingPathExtension];
+    outputFullPath = [[_deskTopPath stringByAppendingPathComponent:outputFullPath] stringByAppendingFormat:@".crash"];
+    NSString *arg4 = _crashItem.filePath.length > 0 ?_crashItem.filePath : outputFullPath;
+    
     NSArray<NSString *> *args = @[arg1,arg2,arg3,arg4];
 
+    __weak typeof(self) weakSelf = self;
     [ScriptManager executeScriptPath:scriptPath args:args executing:^(NSString *output) {
         
     } completion:^(BOOL success) {
-        
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        if (success) {
+            [strongSelf stopAnimation];
+            sender.enabled = YES;
+            [strongSelf showAlertView:[NSString stringWithFormat:@"解析出的文件路径为%@",arg4] message:@"解析已完成"];
+        }
     }];
 
 }
