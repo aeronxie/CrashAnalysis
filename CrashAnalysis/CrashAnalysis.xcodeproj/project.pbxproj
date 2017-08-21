@@ -14,8 +14,8 @@
 		52316AB31F484F20000FFEE2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52316AB11F484F20000FFEE2 /* Main.storyboard */; };
 		5275CA561F48584100068C6E /* ScriptManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275CA551F48584100068C6E /* ScriptManager.m */; };
 		5275CA591F485C5F00068C6E /* FileItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 5275CA581F485C5F00068C6E /* FileItem.m */; };
-		5275CA5D1F486A4B00068C6E /* AnalysisScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5275CA5B1F4860F500068C6E /* AnalysisScript.sh */; };
 		5275CA5F1F48743C00068C6E /* FindSymbolicatecrash.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5275CA5E1F48743C00068C6E /* FindSymbolicatecrash.sh */; };
+		5275CA611F4A799900068C6E /* AnalysisScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5275CA601F4A799900068C6E /* AnalysisScript.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +32,8 @@
 		5275CA551F48584100068C6E /* ScriptManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScriptManager.m; sourceTree = "<group>"; };
 		5275CA571F485C5F00068C6E /* FileItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileItem.h; sourceTree = "<group>"; };
 		5275CA581F485C5F00068C6E /* FileItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileItem.m; sourceTree = "<group>"; };
-		5275CA5B1F4860F500068C6E /* AnalysisScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = AnalysisScript.sh; sourceTree = "<group>"; };
 		5275CA5E1F48743C00068C6E /* FindSymbolicatecrash.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FindSymbolicatecrash.sh; sourceTree = "<group>"; };
+		5275CA601F4A799900068C6E /* AnalysisScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = AnalysisScript.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +78,7 @@
 				52316AB11F484F20000FFEE2 /* Main.storyboard */,
 				52316AB41F484F20000FFEE2 /* Info.plist */,
 				5275CA5E1F48743C00068C6E /* FindSymbolicatecrash.sh */,
-				5275CA5B1F4860F500068C6E /* AnalysisScript.sh */,
+				5275CA601F4A799900068C6E /* AnalysisScript.sh */,
 				52316AA91F484F20000FFEE2 /* Supporting Files */,
 			);
 			path = CrashAnalysis;
@@ -150,8 +150,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5275CA5D1F486A4B00068C6E /* AnalysisScript.sh in Resources */,
 				5275CA5F1F48743C00068C6E /* FindSymbolicatecrash.sh in Resources */,
+				5275CA611F4A799900068C6E /* AnalysisScript.sh in Resources */,
 				52316AB01F484F20000FFEE2 /* Assets.xcassets in Resources */,
 				52316AB31F484F20000FFEE2 /* Main.storyboard in Resources */,
 			);
