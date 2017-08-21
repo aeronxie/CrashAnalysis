@@ -17,6 +17,7 @@
 		5275CA5F1F48743C00068C6E /* FindSymbolicatecrash.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5275CA5E1F48743C00068C6E /* FindSymbolicatecrash.sh */; };
 		5275CA611F4A799900068C6E /* AnalysisScript.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5275CA601F4A799900068C6E /* AnalysisScript.sh */; };
 		5275CA631F4A914900068C6E /* GetdeskTop.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5275CA621F4A914900068C6E /* GetdeskTop.sh */; };
+		5275CA671F4AAD8300068C6E /* OpenCrashLog.sh in Resources */ = {isa = PBXBuildFile; fileRef = 5275CA661F4AAD8300068C6E /* OpenCrashLog.sh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		5275CA5E1F48743C00068C6E /* FindSymbolicatecrash.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = FindSymbolicatecrash.sh; sourceTree = "<group>"; };
 		5275CA601F4A799900068C6E /* AnalysisScript.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = AnalysisScript.sh; sourceTree = "<group>"; };
 		5275CA621F4A914900068C6E /* GetdeskTop.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = GetdeskTop.sh; sourceTree = "<group>"; };
+		5275CA661F4AAD8300068C6E /* OpenCrashLog.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = OpenCrashLog.sh; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				5275CA5E1F48743C00068C6E /* FindSymbolicatecrash.sh */,
 				5275CA601F4A799900068C6E /* AnalysisScript.sh */,
 				5275CA621F4A914900068C6E /* GetdeskTop.sh */,
+				5275CA661F4AAD8300068C6E /* OpenCrashLog.sh */,
 				52316AA91F484F20000FFEE2 /* Supporting Files */,
 			);
 			path = CrashAnalysis;
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5275CA631F4A914900068C6E /* GetdeskTop.sh in Resources */,
+				5275CA671F4AAD8300068C6E /* OpenCrashLog.sh in Resources */,
 				5275CA5F1F48743C00068C6E /* FindSymbolicatecrash.sh in Resources */,
 				5275CA611F4A799900068C6E /* AnalysisScript.sh in Resources */,
 				52316AB01F484F20000FFEE2 /* Assets.xcassets in Resources */,

@@ -115,23 +115,32 @@
 
 - (BOOL)checkValid {
     if (self.dsymTextfield.stringValue.length <= 0) {
-        [self showAlertView:@"请选择DSYM文件" message:@"选择文件失败"];
+        [self showAlertView:@"请选择DSYM文件" message:@"选择文件失败" excuteblock:nil];
         return NO;
     }
     if (self.ipsTextfield.stringValue.length <= 0) {
-        [self showAlertView:@"请选择ips文件" message:@"选择文件失败"];
+        [self showAlertView:@"请选择ips文件" message:@"选择文件失败" excuteblock:nil];
         return NO;
     }
     return YES;
 }
 
-- (void)showAlertView:(NSString *)infoTxt message:(NSString *)msg {
+- (void)showAlertView:(NSString *)infoTxt message:(NSString *)msg excuteblock:(dispatch_block_t)block {
     NSAlert *alert = [[NSAlert alloc] init];
-    [alert addButtonWithTitle:@"好的"];
+    if (block) {
+        [alert addButtonWithTitle:@"直接打开"];
+    }
+    [alert addButtonWithTitle:@"知道了~"];
     [alert setMessageText:msg];
     [alert setInformativeText:infoTxt];
     [alert setAlertStyle:NSInformationalAlertStyle];
-    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:nil];
+    [alert beginSheetModalForWindow:[NSApplication sharedApplication].keyWindow completionHandler:^(NSInteger returnCode) {
+        if (returnCode == 1000) {
+            if (block) {
+                block();
+            }
+        }
+    }];
 }
 
 - (IBAction)choiceDsym:(id)sender {
@@ -169,7 +178,9 @@
         if (success) {
             [strongSelf stopAnimation];
             sender.enabled = YES;
-            [strongSelf showAlertView:[NSString stringWithFormat:@"解析出的文件路径为%@",arg4] message:@"解析已完成"];
+            [strongSelf showAlertView:[NSString stringWithFormat:@"解析出的文件路径为:%@",arg4] message:@"解析已完成"excuteblock:^{
+                [ScriptManager executeScriptPath:scriptPathInBundle(@"OpenCrashLog") args:@[arg4] executing:nil completion:nil];
+            }];
         }
     }];
 
