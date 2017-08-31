@@ -103,13 +103,11 @@
 
 - (void)startAnimation {
     self.indicator.hidden = NO;
-//    self.FileOutputButton.enabled = NO;
     [self.indicator startAnimation:self];
 }
 
 - (void)stopAnimation {
     self.indicator.hidden = YES;
-//    self.FileOutputButton.enabled = YES;
     [self.indicator startAnimation:self];
 }
 

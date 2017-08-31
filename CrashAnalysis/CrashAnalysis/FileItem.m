@@ -33,6 +33,7 @@ NSArray<NSString *> *allowFileTypes(FileType type) {
             break;
         case FileType_Ips:
             [fileTypesArray addObject:@"ips"];
+            [fileTypesArray addObject:@"crash"];
             break;
         case FileType_CrashLog:
             [fileTypesArray addObject:@"crash"];
